@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: com.thecodeslinger.CalculatorTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.416 s <<< FAILURE! - in com.thecodeslinger.CalculatorTest
+does_when_verify  Time elapsed: 0.013 s  <<< ERROR!
+org.mockito.exceptions.misusing.PotentialStubbingProblem: 
+
+Strict stubbing argument mismatch. Please check:
+ - this invocation of 'sum' method:
+    calculator.sum(20, 1);
+    -> at com.thecodeslinger.ComplexOperationService.doComplexOperation(ComplexOperationService.java:11)
+ - has following stubbing(s) with different arguments:
+    1. calculator.sum(40, 2);
+      -> at com.thecodeslinger.CalculatorTest.does_when_verify(CalculatorTest.java:25)
+Typically, stubbing argument mismatch indicates user mistake when writing tests.
+Mockito fails early so that you can debug potential problem easily.
+However, there are legit scenarios when this exception generates false negative signal:
+  - stubbing the same method multiple times using 'given().will()' or 'when().then()' API
+    Please use 'will().given()' or 'doReturn().when()' API for stubbing.
+  - stubbed method is intentionally invoked with different arguments by code under test
+    Please use default or 'silent' JUnit Rule (equivalent of Strictness.LENIENT).
+For more information see javadoc for PotentialStubbingProblem class.
+	at com.thecodeslinger.CalculatorTest.does_when_verify(CalculatorTest.java:26)
+
