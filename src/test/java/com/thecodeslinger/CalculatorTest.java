@@ -32,6 +32,12 @@ public class CalculatorTest
         when(calculator.sum(40, 2)).thenReturn(42);
         complexOperationService.doComplexOperation(20, 1);
     }
+
+    @Test
+    public void verify_with_when_fails_no_call()
+    {
+        when(calculator.sum(40, 2)).thenReturn(42);
+    }
     
     @Test
     public void verify_with_verify_anyInt()
@@ -46,6 +52,13 @@ public class CalculatorTest
     {
         when(calculator.sum(anyInt(), anyInt())).thenReturn(42);
         complexOperationService.doComplexOperation(20, 1);
+        verify(calculator).sum(40, 2);
+    }
+    
+    @Test
+    public void verify_with_verify_anyInt_fails_no_call()
+    {
+        when(calculator.sum(anyInt(), anyInt())).thenReturn(42);
         verify(calculator).sum(40, 2);
     }
     
